@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARTIST NAME — EPK</title>
+  <meta name="description" content="Electronic Press Kit" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="wrap top">
+    <div class="brand">
+      <div class="name">ARTIST NAME</div>
+      <div class="tag">Techno / Post-punk · Berlin</div>
+    </div>
+
+    <nav class="nav">
+      <a href="#music">Music</a>
+      <a href="#video">Video</a>
+      <a href="#press">Press</a>
+      <a href="#live">Live</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>ARTIST NAME</h1>
+        <p class="lede">
+          One-paragraph bio: what you sound like + why it matters.
+          Keep it concrete (mood, tempo, references, achievements).
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="mailto:booking@yourmail.com">Booking</a>
+          <a class="btn ghost" href="assets/press-kit.zip" download>Download Press Kit</a>
+        </div>
+
+        <div class="links">
+          <a href="https://instagram.com/…" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://youtube.com/…" target="_blank" rel="noreferrer">YouTube</a>
+          <a href="https://open.spotify.com/…" target="_blank" rel="noreferrer">Spotify</a>
+          <a href="https://bandcamp.com/…" target="_blank" rel="noreferrer">Bandcamp</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="assets/press-photo.jpg" alt="Press photo" />
+        <div class="caption">Press photo: credit / photographer</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="kicker">For fans of</div>
+        <div class="big">Artist A · Artist B · Artist C</div>
+      </div>
+      <div class="card">
+        <div class="kicker">Highlights</div>
+        <ul>
+          <li>Release: “Adore You” (Downwards)</li>
+          <li>142k views: “Live at Morphine Raum”</li>
+          <li>Tours / notable venues / radio</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="kicker">Quick facts</div>
+        <ul>
+          <li>Based in: Berlin</li>
+          <li>Available: DJ / Live / Hybrid</li>
+          <li>Tech rider: on request</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="music" class="section">
+      <h2>Music</h2>
+      <div class="embed">
+        <!-- Spotify embed example -->
+        <iframe style="border-radius:12px"
+          src="https://open.spotify.com/embed/artist/YOUR_ID?utm_source=generator"
+          width="100%" height="352" frameborder="0" allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"></iframe>
+      </div>
+
+      <div class="list">
+        <a href="https://open.spotify.com/…" target="_blank" rel="noreferrer">Latest release — Title</a>
+        <a href="https://bandcamp.com/…" target="_blank" rel="noreferrer">Bandcamp — Discography</a>
+      </div>
+    </section>
+
+    <section id="video" class="section">
+      <h2>Video</h2>
+      <div class="embed">
+        <!-- YouTube embed example -->
+        <iframe width="100%" height="420"
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+
+      <div class="list">
+        <a href="https://youtube.com/@yourchannel" target="_blank" rel="noreferrer">More videos</a>
+      </div>
+    </section>
+
+    <section id="press" class="section">
+      <h2>Press</h2>
+      <div class="quotes">
+        <blockquote>
+          “A short quote from press/review. Keep it punchy.”
+          <cite>— Outlet / Magazine</cite>
+        </blockquote>
+        <blockquote>
+          “Second quote. Ideally with a link below.”
+          <cite>— Radio / Blog</cite>
+        </blockquote>
+      </div>
+
+      <div class="list">
+        <a href="https://…" target="_blank" rel="noreferrer">Interview — Outlet</a>
+        <a href="https://…" target="_blank" rel="noreferrer">Review — Outlet</a>
+      </div>
+    </section>
+
+    <section id="live" class="section">
+      <h2>Selected live</h2>
+      <div class="table">
+        <div class="row"><span>2025</span><span>Venue / Festival — City</span></div>
+        <div class="row"><span>2024</span><span>Venue / Festival — City</span></div>
+        <div class="row"><span>2023</span><span>Venue / Festival — City</span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="card">
+          <div class="kicker">Booking</div>
+          <a class="big" href="mailto:booking@yourmail.com">booking@yourmail.com</a>
+        </div>
+        <div class="card">
+          <div class="kicker">Press</div>
+          <a class="big" href="mailto:press@yourmail.com">press@yourmail.com</a>
+        </div>
+        <div class="card">
+          <div class="kicker">Download</div>
+          <a class="big" href="assets/press-kit.zip" download>press-kit.zip</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="y"></span> ARTIST NAME</span>
+      <span class="dot">·</span>
+      <a href="https://instagram.com/…" target="_blank" rel="noreferrer">Instagram</a>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
