@@ -10,50 +10,47 @@
 html,body{
   margin:0;
   padding:0;
-  font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color:var(--fg);
-  background:var(--bg);
 }
 
-/* HERO */
-.hero{
-  position:fixed;
-  inset:0;
+/* FIXED BACKGROUND */
+body{
   background-image:url("assets/press-photo.jpg");
   background-size:cover;
   background-position:center;
-  z-index:-1;
+  background-attachment:fixed;
 }
 
-.hero-overlay{
-  position:absolute;
-  bottom:60px;
-  left:50%;
-  transform:translateX(-50%);
-  text-align:center;
-  padding:32px 40px;
+/* CONTENT FLOW */
+.content{
+  max-width:900px;
+  margin:0 auto;
+  padding:120px 24px 140px;
   background:linear-gradient(
-    to top,
-    rgba(0,0,0,.65),
-    rgba(0,0,0,.25)
+    to bottom,
+    rgba(0,0,0,0),
+    rgba(0,0,0,.9) 240px
   );
-  backdrop-filter:blur(4px);
-  border-radius:28px;
 }
 
-.hero-overlay h1{
-  font-size:52px;
-  letter-spacing:.1em;
-  margin-bottom:22px;
+/* INTRO */
+.intro{
+  margin-bottom:120px;
+}
+
+.intro h1{
+  font-size:56px;
+  letter-spacing:.12em;
+  margin-bottom:28px;
 }
 
 /* SOCIALS */
 .socials{
   display:flex;
-  gap:18px;
-  justify-content:center;
+  gap:20px;
   flex-wrap:wrap;
-  margin-bottom:26px;
+  margin-bottom:32px;
 }
 
 .socials a{
@@ -65,7 +62,6 @@ html,body{
 .cta{
   display:flex;
   gap:16px;
-  justify-content:center;
   flex-wrap:wrap;
 }
 
@@ -73,52 +69,22 @@ html,body{
   padding:12px 20px;
   border:1px solid var(--fg);
   border-radius:999px;
-  text-decoration:none;
   color:var(--fg);
+  text-decoration:none;
 }
 
 .btn.ghost{
   border-color:var(--line);
 }
 
-/* CONTENT */
-.content{
-  position:relative;
-  margin-top:100vh;
-  padding:80px 24px 120px;
-  background:linear-gradient(
-    to bottom,
-    rgba(11,11,12,0),
-    rgba(11,11,12,.95) 120px
-  );
-}
-
+/* SECTIONS */
 .section{
-  max-width:900px;
-  margin:0 auto 72px;
+  margin-bottom:80px;
 }
 
 .section h2{
   font-size:26px;
-  margin-bottom:20px;
-}
-
-/* RELEASES */
-.releases{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:28px;
-}
-
-.releases img{
-  width:100%;
-  border-radius:16px;
-}
-
-.releases span{
-  display:block;
-  margin-top:10px;
-  color:var(--muted);
+  margin-bottom:18px;
 }
 
 /* VIDEO */
@@ -126,18 +92,13 @@ html,body{
   width:100%;
   aspect-ratio:16/9;
   border-radius:18px;
-  margin-bottom:26px;
+  margin-bottom:22px;
 }
 
 .video-list{
   display:flex;
   flex-direction:column;
   gap:10px;
-  color:var(--muted);
-}
-
-.video-list span{
-  margin-bottom:6px;
 }
 
 .video-list a{
@@ -145,25 +106,93 @@ html,body{
   text-decoration:none;
 }
 
-/* PRESS */
-.press{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+/* RELEASES (smaller) */
+.releases{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
 }
 
-.press a{
+.releases img{
+  width:100%;
+  border-radius:12px;
+}
+
+.releases span{
+  display:block;
+  margin-top:8px;
   color:var(--muted);
+}
+
+/* PRESS */
+.section a{
+  display:block;
+  margin-bottom:10px;
+  color:var(--muted);
+  text-decoration:none;
 }
 
 /* CONTACT */
 .contact{
   text-align:center;
+  margin-top:120px;
 }
 
 /* RESPONSIVE */
 @media (max-width:800px){
-  .hero-overlay h1{font-size:38px}
+  .intro h1{font-size:40px}
   .releases{grid-template-columns:1fr}
-  .hero-overlay{padding:26px}
+}
+/* PRESS CARDS */
+.press-cards{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.press-card{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  text-decoration:none;
+  color:var(--fg);
+}
+
+.press-card img{
+  width:220px;           /* узко */
+  height:84px;           /* одинаковая высота */
+  border-radius:12px;
+  object-fit:cover;      /* подгоняет под прямоугольник */
+  flex:0 0 auto;
+  opacity:.92;
+}
+
+.press-card:hover img{
+  opacity:1;
+}
+
+.press-meta{
+  min-width:0;
+}
+
+.press-title{
+  font-size:16px;
+  letter-spacing:.02em;
+}
+
+.press-source{
+  color:var(--muted);
+  margin-top:6px;
+  font-size:13px;
+}
+
+/* mobile */
+@media (max-width:700px){
+  .press-card{
+    align-items:flex-start;
+  }
+  .press-card img{
+    width:160px;
+    height:70px;
+  }
 }
