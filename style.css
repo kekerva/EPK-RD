@@ -22,21 +22,26 @@ body{
   background-attachment:fixed;
 }
 
-/* CONTENT FLOW */
+/* FULL-WIDTH GRADIENT FLOW */
 .content{
-  max-width:900px;
-  margin:0 auto;
-  padding:120px 24px 140px;
+  width:100%;
+  padding:0;
   background:linear-gradient(
     to bottom,
-    rgba(0,0,0,0),
-    rgba(0,0,0,.9) 240px
+    rgba(0,0,0,0) 60vh,
+    rgba(0,0,0,.95) 100vh
   );
 }
 
-/* INTRO */
+/* INTRO — STARTS LOW */
 .intro{
-  margin-bottom:120px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  text-align:center;
+  padding-bottom:80px;
 }
 
 .intro h1{
@@ -50,6 +55,7 @@ body{
   display:flex;
   gap:20px;
   flex-wrap:wrap;
+  justify-content:center;
   margin-bottom:32px;
 }
 
@@ -63,6 +69,7 @@ body{
   display:flex;
   gap:16px;
   flex-wrap:wrap;
+  justify-content:center;
 }
 
 .btn{
@@ -79,7 +86,9 @@ body{
 
 /* SECTIONS */
 .section{
-  margin-bottom:80px;
+  max-width:900px;
+  margin:0 auto 80px;
+  padding:0 24px;
 }
 
 .section h2{
@@ -92,44 +101,46 @@ body{
   width:100%;
   aspect-ratio:16/9;
   border-radius:18px;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 
-.video-list{
+.video-links{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:8px;
 }
 
-.video-list a{
+.video-links a{
   color:var(--muted);
   text-decoration:none;
 }
 
-/* RELEASES (smaller) */
+/* RELEASES — SMALLER */
 .releases{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:20px;
+  gap:16px;
 }
 
 .releases img{
   width:100%;
+  max-width:320px;   /* ← уменьшение в 2 раза */
   border-radius:12px;
 }
 
-.releases span{
-  display:block;
-  margin-top:8px;
-  color:var(--muted);
+/* PRESS — WIDE, SAME AS VIDEO */
+.press-wide{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
 }
 
-/* PRESS */
-.section a{
-  display:block;
-  margin-bottom:10px;
-  color:var(--muted);
-  text-decoration:none;
+.press-wide img{
+  width:100%;
+  max-width:900px;
+  height:160px;
+  object-fit:cover;
+  border-radius:14px;
 }
 
 /* CONTACT */
@@ -142,57 +153,5 @@ body{
 @media (max-width:800px){
   .intro h1{font-size:40px}
   .releases{grid-template-columns:1fr}
-}
-/* PRESS CARDS */
-.press-cards{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-.press-card{
-  display:flex;
-  gap:14px;
-  align-items:center;
-  text-decoration:none;
-  color:var(--fg);
-}
-
-.press-card img{
-  width:220px;           /* узко */
-  height:84px;           /* одинаковая высота */
-  border-radius:12px;
-  object-fit:cover;      /* подгоняет под прямоугольник */
-  flex:0 0 auto;
-  opacity:.92;
-}
-
-.press-card:hover img{
-  opacity:1;
-}
-
-.press-meta{
-  min-width:0;
-}
-
-.press-title{
-  font-size:16px;
-  letter-spacing:.02em;
-}
-
-.press-source{
-  color:var(--muted);
-  margin-top:6px;
-  font-size:13px;
-}
-
-/* mobile */
-@media (max-width:700px){
-  .press-card{
-    align-items:flex-start;
-  }
-  .press-card img{
-    width:160px;
-    height:70px;
-  }
+  .press-wide img{height:120px}
 }
