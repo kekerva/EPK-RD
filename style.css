@@ -295,3 +295,10 @@ a:hover{ opacity:.85; }
     margin-top: 72px;
   }
 }
+/* === FINAL BUTTON STYLE === */
+.btn{
+  padding:12px 20px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:999px;
+  background:transparent;
+}
