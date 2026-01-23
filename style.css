@@ -368,4 +368,39 @@ a:hover{opacity:.85}
 .thumb:hover::after{
   opacity:1;
 }
+/* CLEAN PLAY ICON — triangle only */
+
+.thumb{
+  position:relative;
+}
+
+.thumb::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:0;
+  height:0;
+  border-left:22px solid rgba(255,255,255,.75); /* полупрозрачный */
+  border-top:14px solid transparent;
+  border-bottom:14px solid transparent;
+  opacity:0;
+  transition:opacity .2s ease;
+  pointer-events:none;
+}
+
+.thumb:hover::after{
+  opacity:1;
+}
+/* MOBILE: show full background image */
+@media (max-width: 700px){
+  body{
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #000; /* на случай пустых полей */
+    background-attachment: scroll;
+  }
+}
 
