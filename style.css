@@ -245,3 +245,28 @@ a:hover{opacity:.85}
   .intro h1{font-size:40px}
   .video-thumbs{grid-template-columns:repeat(2,1fr)}
 }
+/* 1) Return rounded corners */
+.btn{ border-radius:999px; }
+.section iframe{ border-radius:12px; }
+.video-main{ border-radius:18px; }
+
+.thumb{ border-radius:14px; }
+.thumb{ overflow:hidden; } /* на всякий случай */
+
+.release img{ border-radius:14px; }
+
+/* 2) More space after Releases block */
+.releases{ margin-bottom:36px; }
+
+/* 3) More space between covers + make long title fit one line */
+.releases{ gap:90px; }              /* больше расстояние между обложками */
+.release{ width:280px; }            /* шире карточка для одной строки */
+.release img{ width:140px; margin:0 auto; }  /* обложка остаётся маленькой */
+.release-title{ white-space:nowrap; }         /* принудительно в одну строку */
+
+/* 4) Press source closer to the right side */
+.press-source{
+  display:block;
+  text-align:right;
+}
+
