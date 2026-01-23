@@ -280,3 +280,8 @@ a:hover{ opacity:.85; }
     );
   }
 }
+@media (max-width:700px){
+  .releases{
+    gap:48px;   /* или 40px, если хочется плотнее */
+  }
+}
