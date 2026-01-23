@@ -14,7 +14,7 @@ html,body{
   color:var(--fg);
 }
 
-/* fixed background stays */
+/* FIXED BACKGROUND */
 body{
   background-image:url("assets/press-photo.jpg");
   background-size:cover;
@@ -22,21 +22,18 @@ body{
   background-attachment:fixed;
 }
 
-/* 7) FULL-WIDTH overlay with no gaps:
-   - gradient begins low (near bottom of first screen)
-   - then becomes fully dark and stays dark for the rest of the page */
+/* CONTENT OVERLAY — starts ONLY from title down */
 .content{
   width:100%;
-  background-color: rgba(0,0,0,.95);
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0) 70vh,
-    rgba(0,0,0,.95) 110vh
+    rgba(0,0,0,0) 75vh,
+    rgba(0,0,0,.92) 120vh
   );
-  padding: 0 0 140px;
+  padding-bottom:140px;
 }
 
-/* Intro sits at bottom of first screen */
+/* INTRO */
 .intro{
   min-height:100vh;
   display:flex;
@@ -44,32 +41,33 @@ body{
   justify-content:flex-end;
   align-items:center;
   text-align:center;
-  padding: 0 24px 80px;
+  padding:0 24px 80px;
 }
 
 .intro h1{
   font-size:56px;
   letter-spacing:.12em;
-  margin:0 0 26px;
+  margin-bottom:28px;
 }
 
-a{ color:var(--fg); text-decoration:none; }
-a:hover{ opacity:.85; }
+/* LINKS */
+a{color:var(--fg);text-decoration:none}
+a:hover{opacity:.85}
 
-/* socials */
+/* SOCIALS */
 .socials{
   display:flex;
   gap:20px;
   flex-wrap:wrap;
   justify-content:center;
-  margin:0 0 30px;
+  margin-bottom:32px;
 }
 
 .socials a{
   color:var(--muted);
 }
 
-/* buttons */
+/* BUTTONS */
 .cta{
   display:flex;
   gap:16px;
@@ -87,241 +85,164 @@ a:hover{ opacity:.85; }
   border-color:var(--line);
 }
 
-/* sections layout */
+/* SECTIONS */
 .section{
   max-width:900px;
   margin:0 auto 84px;
   padding:0 24px;
 }
 
-/* 2) Center + uppercase headings */
+/* HEADINGS — 20px centered */
 .section h2{
   text-align:center;
   text-transform:uppercase;
-  letter-spacing:.18em;
-  font-size:14px;
+  letter-spacing:.14em;
+  font-size:20px;
   color:var(--muted);
-  margin:0 0 18px;
+  margin-bottom:20px;
 }
 
-/* main video */
+/* VIDEO */
 .video-main{
   width:100%;
   aspect-ratio:16/9;
   border-radius:18px;
-  margin:0 0 18px;
+  margin-bottom:18px;
 }
 
-/* 6) small square previews with custom play on hover */
+/* VIDEO THUMBS */
 .video-thumbs{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
 }
 
 .thumb{
   position:relative;
-  display:block;
   border-radius:14px;
   overflow:hidden;
-  background: rgba(255,255,255,.03);
 }
 
 .thumb img{
   width:100%;
-  height:100%;
   aspect-ratio:1/1;
   object-fit:cover;
-  display:block;
-  transform: scale(1.02);
-  opacity:.95;
-  transition: transform .25s ease, opacity .25s ease;
+  transition:transform .25s ease;
+}
+
+.thumb:hover img{
+  transform:scale(1.06);
+}
+
+/* play button */
+.thumb::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.25);
+  opacity:0;
+  transition:opacity .2s ease;
 }
 
 .thumb::after{
   content:"";
   position:absolute;
-  inset:0;
-  opacity:0;
-  transition: opacity .2s ease;
-  background: radial-gradient(circle at 50% 50%, rgba(0,0,0,.25), rgba(0,0,0,0) 55%);
-}
-
-.thumb::before{
-  content:"";
-  position:absolute;
-  left:50%;
   top:50%;
-  width:54px;
-  height:54px;
-  transform: translate(-50%, -50%);
-  border-radius:999px;
-  background: rgba(180,180,180,.28);
-  border: 1px solid rgba(255,255,255,.25);
+  left:50%;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(180,180,180,.35);
+  transform:translate(-50%,-50%);
   opacity:0;
-  transition: opacity .2s ease, transform .2s ease;
 }
 
-.thumb:hover img{
-  transform: scale(1.06);
+.thumb:hover::before,
+.thumb:hover::after{
   opacity:1;
 }
-.thumb:hover::after{ opacity:1; }
-.thumb:hover::before{
-  opacity:1;
-  transform: translate(-50%, -50%) scale(1.02);
-}
 
-/* triangle play icon (on top of the circle) */
-.thumb span{ display:none; } /* not used, but safe */
-.thumb i{ display:none; }    /* not used, but safe */
-.thumb em{ display:none; }   /* not used, but safe */
-.thumb b{ display:none; }    /* not used, but safe */
-
-.thumb:hover{
-  cursor:pointer;
-}
-
-.thumb:hover .play{ opacity:1; }
-
-.thumb::marker{ content:""; }
-
-/* draw the play triangle */
-.thumb .triangle{ display:none; } /* unused */
-.thumb:hover::before{ /* circle exists */ }
-
-.thumb:hover .triangle{ display:none; } /* unused */
-
-/* use another pseudo for triangle */
-.thumb .x{ display:none; } /* unused */
-.thumb .y{ display:none; } /* unused */
-
-.thumb:hover::before{ /* circle already */ }
-
-.thumb:hover::after{ /* vignette already */ }
-
-.thumb{
-  /* third pseudo via background image trick is messy; use ::after for vignette and a tiny inline SVG via mask */
-}
-.thumb:has(img)::before{
-  /* circle is ::before */
-}
-.thumb:has(img)::after{
-  /* vignette is ::after */
-}
-
-/* triangle via mask on a new overlay element */
-.thumb .play-icon{ display:none; }
-
-/* easiest: add triangle using background on ::before with multiple backgrounds */
-.thumb::before{
-  background:
-    radial-gradient(circle at 50% 50%, rgba(180,180,180,.28), rgba(180,180,180,.28)) ,
-    linear-gradient(transparent, transparent);
-}
-.thumb:hover::before{
-  /* keep circle; triangle will be added using background-image below */
-}
-.thumb::before{
-  /* add triangle using conic gradient hack? too brittle; instead use border triangle with extra element? */
-}
-
-/* We'll implement triangle using box-shadow via ::before? Not great.
-   Simple robust method: add triangle using ::after? but ::after already used for vignette.
-   So: switch vignette to background on .thumb, and free ::after for triangle. */
-.video-thumbs .thumb{
-  background: rgba(255,255,255,.03);
-}
-.video-thumbs .thumb::after{
-  content:"";
+/* triangle */
+.thumb span{
   position:absolute;
-  left:50%;
   top:50%;
+  left:50%;
+  transform:translate(-40%,-50%);
   width:0;
   height:0;
-  border-left:14px solid rgba(255,255,255,.7);
+  border-left:14px solid #fff;
   border-top:9px solid transparent;
   border-bottom:9px solid transparent;
-  transform: translate(-40%, -50%);
-  opacity:0;
-  transition: opacity .2s ease;
-  z-index:2;
-}
-.video-thumbs .thumb:hover::after{
-  opacity:1;
-}
-/* Put vignette on img via filter-ish overlay using box-shadow inset */
-.video-thumbs .thumb:hover{
-  box-shadow: inset 0 0 0 9999px rgba(0,0,0,.18);
 }
 
-/* releases (4) hover + label lines, smaller */
-.releases{
+/* RELEASES + PRESS two columns */
+.two-col{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:22px;
-  align-items:start;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+}
+
+/* RELEASES */
+.releases{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  align-items:center;
 }
 
 .release{
-  display:block;
-  max-width:320px; /* smaller feel */
+  width:180px;
+  text-align:center;
 }
 
 .release img{
   width:100%;
   border-radius:14px;
-  display:block;
-  transition: transform .25s ease;
+  transition:transform .25s ease;
 }
 
 .release:hover img{
-  transform: translateY(-6px) scale(1.03);
+  transform:translateY(-6px) scale(1.03);
 }
 
 .release-title{
   margin-top:12px;
-  color:var(--fg);
   font-size:15px;
-  letter-spacing:.02em;
 }
 
 .release-label{
   margin-top:6px;
-  color:var(--muted);
   font-size:13px;
+  color:var(--muted);
 }
 
-/* press (5) */
+/* PRESS */
 .press-list{
   display:flex;
   flex-direction:column;
   gap:18px;
 }
 
-.press-item{
-  display:block;
-}
-
 .press-title{
-  color:var(--fg);
   font-style:italic;
   font-size:16px;
-  line-height:1.45;
 }
 
 .press-source{
-  color:var(--muted);
+  margin-top:6px;
   font-size:12px;
+  color:var(--muted);
   letter-spacing:.14em;
-  text-transform:uppercase;
-  margin-top:8px;
 }
 
-/* responsive */
+/* CONTACT */
+.contact{
+  text-align:center;
+}
+
+/* RESPONSIVE */
 @media (max-width:900px){
-  .intro h1{ font-size:40px; }
-  .video-thumbs{ grid-template-columns:repeat(2, 1fr); }
-  .releases{ grid-template-columns:1fr; }
-  .release{ max-width:340px; }
+  .intro h1{font-size:40px}
+  .video-thumbs{grid-template-columns:repeat(2,1fr)}
+  .two-col{grid-template-columns:1fr}
 }
