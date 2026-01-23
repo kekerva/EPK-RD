@@ -216,7 +216,6 @@ a:hover{opacity:.85}
   font-style:italic;
 }
 
-
 /* PRESS — centered text */
 .press-list{
   max-width:720px;
@@ -238,101 +237,8 @@ a:hover{opacity:.85}
   letter-spacing:.14em;
 }
 
-
 /* RESPONSIVE */
 @media (max-width:900px){
   .intro h1{font-size:40px}
   .video-thumbs{grid-template-columns:repeat(2,1fr)}
 }
-/* 1) Return rounded corners */
-.btn{ border-radius:999px; }
-.section iframe{ border-radius:12px; }
-.video-main{ border-radius:18px; }
-
-.thumb{ border-radius:14px; }
-.thumb{ overflow:hidden; } /* на всякий случай */
-
-.release img{ border-radius:14px; }
-
-/* 2) More space after Releases block */
-.releases{ margin-bottom:36px; }
-
-/* 3) More space between covers + make long title fit one line */
-.releases{ gap:90px; }              /* больше расстояние между обложками */
-.release{ width:280px; }            /* шире карточка для одной строки */
-.release img{ width:140px; margin:0 auto; }  /* обложка остаётся маленькой */
-.release-title{ white-space:nowrap; }         /* принудительно в одну строку */
-
-/* 4) Press source closer to the right side */
-.press-source{
-  display:block;
-  text-align:right;
-}
-/* === RELEASES — bigger covers, sharp corners, bigger text === */
-
-/* 1) обложки больше на ~1/4 и БЕЗ скруглений */
-.release{
-  width:220px;              /* было 140 → +~60% */
-  text-align:center;
-}
-
-.release img{
-  width:100%;
-  border-radius:0;          /* убираем скругления */
-}
-
-/* 2) названия альбомов и лейбла — x2 */
-.release-title{
-  font-size:30px;           /* было ~15 */
-  line-height:1.25;
-}
-
-.release-label{
-  font-size:26px;           /* было ~13 */
-  font-style:italic;
-  margin-top:10px;
-}
-
-
-/* === PRESS — bigger text + alignment fix === */
-
-/* 3) ссылки press — x2 */
-.press-title{
-  font-size:32px;           /* было ~16 */
-  line-height:1.3;
-}
-
-/* 4) источник выравнивается по правому краю ТЕКСТА */
-.press-item{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;   /* ключевой момент */
-}
-
-.press-source{
-  align-self:flex-end;      /* прижимает к правому краю строки */
-  font-size:18px;           /* было ~12 */
-  margin-top:10px;
-}
-/* Section divider line (centered) */
-.section{
-  position: relative;
-  padding-top: 70px;
-}
-
-.section::before{
-  content:"";
-  position:absolute;
-  top:26px;
-  left:50%;
-  transform:translateX(-50%);
-  width:120px;
-  height:1px;
-  background: rgba(255,255,255,.25);
-}
-
-.section:first-of-type::before{
-  display:none;
-}
-
-
