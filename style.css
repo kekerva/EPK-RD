@@ -66,3 +66,44 @@ cite{display:block;color:var(--muted);font-style:normal;margin-top:10px}
   .contact-grid{grid-template-columns:1fr}
   .top{position:relative}
 }
+/* --- Background image --- */
+body{
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background-image: url("assets/press-photo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  filter: blur(2px);
+  opacity: 0.55;
+  z-index: -2;
+}
+
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: -1;
+}
+.hero-media{ display:none; }
+.hero{
+  display:block;
+  padding-top: 34px;
+}
+
+.hero-text{
+  max-width: 760px;
+  background: rgba(18,18,20,0.72);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 22px;
+  backdrop-filter: blur(10px);
+}
