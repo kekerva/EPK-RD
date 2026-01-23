@@ -285,3 +285,13 @@ a:hover{ opacity:.85; }
     gap:48px;   /* или 40px, если хочется плотнее */
   }
 }
+/* MOBILE: add space before PRESS column */
+@media (max-width: 700px){
+  .two-col{
+    flex-direction: column;
+  }
+
+  .two-col .press{
+    margin-top: 72px;
+  }
+}
