@@ -242,3 +242,89 @@ a:hover{opacity:.85}
   .intro h1{font-size:40px}
   .video-thumbs{grid-template-columns:repeat(2,1fr)}
 }
+/* === ROUNDED CORNERS (return) === */
+.btn{ border-radius:999px; }
+.section iframe{ border-radius:12px; }
+.video-main{ border-radius:18px; }
+
+.thumb{ border-radius:14px; overflow:hidden; }
+.release img{ border-radius:14px; }
+
+/* === RELEASES: bigger covers + more gap + single-line title === */
+.releases{
+  gap:110px;                 /* больше расстояние между обложками */
+}
+
+.release{
+  width:210px;               /* было 140 → x1.5 */
+  text-align:center;
+}
+
+.release img{
+  width:100%;
+}
+
+.release-title{
+  white-space:nowrap;        /* чтобы Adore You/Bored... было в одну строку */
+  font-size:15px;
+}
+
+/* если где-то ещё остался большой шрифт из патчей — принудительно вернуть */
+.release-label{
+  font-size:13px;
+  font-style:italic;
+}
+
+/* === VIDEO THUMBS: restore play button without HTML span === */
+.thumb::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.22);
+  opacity:0;
+  transition:opacity .2s ease;
+  z-index:1;
+}
+
+/* play circle */
+.thumb::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:54px;
+  height:54px;
+  transform:translate(-50%,-50%);
+  border-radius:999px;
+  background:rgba(180,180,180,.32);
+  border:1px solid rgba(255,255,255,.35);
+  opacity:0;
+  transition:opacity .2s ease;
+  z-index:2;
+}
+
+/* play triangle (separate pseudo on img container via box-shadow trick) */
+.thumb img{
+  position:relative;
+}
+
+.thumb img::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:0;
+  height:0;
+  transform:translate(-40%,-50%);
+  border-left:14px solid rgba(255,255,255,.85);
+  border-top:9px solid transparent;
+  border-bottom:9px solid transparent;
+  opacity:0;
+  transition:opacity .2s ease;
+  z-index:3;
+}
+
+/* hover */
+.thumb:hover::before{ opacity:1; }
+.thumb:hover::after{ opacity:1; }
+.thumb:hover img::after{ opacity:1; }
