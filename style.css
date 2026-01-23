@@ -393,14 +393,53 @@ a:hover{opacity:.85}
 .thumb:hover::after{
   opacity:1;
 }
-/* MOBILE: show full background image */
+
+/* MOBILE HERO: use dedicated crop + keep gradient */
 @media (max-width: 700px){
   body{
-    background-size: contain;
+    background-image: url("assets/press-photo-mobile.jpg");
+    background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    background-color: #000; /* на случай пустых полей */
-    background-attachment: scroll;
+    background-attachment: scroll; /* важно для iOS */
+  }
+
+  /* градиент начинается раньше, чтобы текст читался */
+  .content{
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 45vh,
+      rgba(0,0,0,.9) 90vh
+    );
   }
 }
+/* FINAL: play icon on video thumbs (triangle only) + light dim */
+.thumb::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background: rgba(0,0,0,.18) !important;
+  opacity:0 !important;
+  transition: opacity .2s ease !important;
+  pointer-events:none !important;
+}
+
+.thumb::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:0 !important;
+  height:0 !important;
+  border-left:22px solid rgba(255,255,255,.75) !important;
+  border-top:14px solid transparent !important;
+  border-bottom:14px solid transparent !important;
+  opacity:0 !important;
+  transition: opacity .2s ease !important;
+  pointer-events:none !important;
+}
+
+.thumb:hover::before{ opacity:1 !important; }
+.thumb:hover::after{ opacity:1 !important; }
 
