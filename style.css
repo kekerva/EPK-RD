@@ -22,13 +22,13 @@ body{
   background-attachment:fixed;
 }
 
-/* CONTENT OVERLAY — starts ONLY from title down */
+/* GRADIENT — starts higher, but below title top */
 .content{
   width:100%;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0) 75vh,
-    rgba(0,0,0,.92) 120vh
+    rgba(0,0,0,0) 60vh,
+    rgba(0,0,0,.9) 110vh
   );
   padding-bottom:140px;
 }
@@ -78,7 +78,7 @@ a:hover{opacity:.85}
 .btn{
   padding:12px 20px;
   border:1px solid var(--fg);
-  border-radius:999px;
+  border-radius:0; /* no rounded corners */
 }
 
 .btn.ghost{
@@ -92,22 +92,32 @@ a:hover{opacity:.85}
   padding:0 24px;
 }
 
-/* HEADINGS — 20px centered */
+/* HEADINGS */
 .section h2{
   text-align:center;
   text-transform:uppercase;
   letter-spacing:.14em;
   font-size:20px;
   color:var(--muted);
-  margin-bottom:20px;
+  margin-bottom:24px;
+}
+
+/* MUSIC (Spotify) */
+.section iframe{
+  border-radius:0; /* remove rounding */
 }
 
 /* VIDEO */
 .video-main{
   width:100%;
   aspect-ratio:16/9;
-  border-radius:18px;
   margin-bottom:18px;
+  border-radius:0;
+}
+
+/* YOUTUBE UI FIX */
+.video-main{
+  background:#000;
 }
 
 /* VIDEO THUMBS */
@@ -119,7 +129,6 @@ a:hover{opacity:.85}
 
 .thumb{
   position:relative;
-  border-radius:14px;
   overflow:hidden;
 }
 
@@ -134,7 +143,7 @@ a:hover{opacity:.85}
   transform:scale(1.06);
 }
 
-/* play button */
+/* overlay + play */
 .thumb::before{
   content:"";
   position:absolute;
@@ -151,18 +160,11 @@ a:hover{opacity:.85}
   left:50%;
   width:52px;
   height:52px;
-  border-radius:50%;
-  background:rgba(180,180,180,.35);
+  border:1px solid rgba(255,255,255,.6);
   transform:translate(-50%,-50%);
   opacity:0;
 }
 
-.thumb:hover::before,
-.thumb:hover::after{
-  opacity:1;
-}
-
-/* triangle */
 .thumb span{
   position:absolute;
   top:50%;
@@ -173,31 +175,30 @@ a:hover{opacity:.85}
   border-left:14px solid #fff;
   border-top:9px solid transparent;
   border-bottom:9px solid transparent;
+  opacity:0;
 }
 
-/* RELEASES + PRESS two columns */
-.two-col{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:32px;
+.thumb:hover::before,
+.thumb:hover::after,
+.thumb:hover span{
+  opacity:1;
 }
 
-/* RELEASES */
+/* RELEASES — centered, smaller */
 .releases{
   display:flex;
-  flex-direction:column;
-  gap:18px;
-  align-items:center;
+  justify-content:center;
+  gap:48px;
+  flex-wrap:wrap;
 }
 
 .release{
-  width:180px;
+  width:140px; /* smaller */
   text-align:center;
 }
 
 .release img{
   width:100%;
-  border-radius:14px;
   transition:transform .25s ease;
 }
 
@@ -214,13 +215,17 @@ a:hover{opacity:.85}
   margin-top:6px;
   font-size:13px;
   color:var(--muted);
+  font-style:italic; /* (Downwards) italic */
 }
 
-/* PRESS */
+/* PRESS — centered text */
 .press-list{
+  max-width:720px;
+  margin:0 auto;
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:28px;
+  text-align:center;
 }
 
 .press-title{
@@ -229,20 +234,14 @@ a:hover{opacity:.85}
 }
 
 .press-source{
-  margin-top:6px;
+  margin-top:8px;
   font-size:12px;
   color:var(--muted);
   letter-spacing:.14em;
-}
-
-/* CONTACT */
-.contact{
-  text-align:center;
 }
 
 /* RESPONSIVE */
 @media (max-width:900px){
   .intro h1{font-size:40px}
   .video-thumbs{grid-template-columns:repeat(2,1fr)}
-  .two-col{grid-template-columns:1fr}
 }
