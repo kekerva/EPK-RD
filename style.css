@@ -207,16 +207,15 @@ a:hover{opacity:.85}
 }
 
 .release-title{
-  margin-top:12px;
   font-size:15px;
+  line-height:1.3;
 }
 
 .release-label{
-  margin-top:6px;
   font-size:13px;
-  color:var(--muted);
-  font-style:italic; /* (Downwards) italic */
+  font-style:italic;
 }
+
 
 /* PRESS — centered text */
 .press-list{
@@ -229,16 +228,16 @@ a:hover{opacity:.85}
 }
 
 .press-title{
-  font-style:italic;
   font-size:16px;
+  line-height:1.45;
+  font-style:italic;
 }
 
 .press-source{
-  margin-top:8px;
   font-size:12px;
-  color:var(--muted);
   letter-spacing:.14em;
 }
+
 
 /* RESPONSIVE */
 @media (max-width:900px){
@@ -318,22 +317,22 @@ a:hover{opacity:.85}
 /* Section divider line (centered) */
 .section{
   position: relative;
-  padding-top: 70px;   /* место для линии над заголовком */
+  padding-top: 70px;
 }
 
 .section::before{
   content:"";
   position:absolute;
-  top: 26px;           /* где линия будет сидеть */
+  top:26px;
   left:50%;
-  transform: translateX(-50%);
-  width: 120px;        /* длина линии */
-  height: 1px;
+  transform:translateX(-50%);
+  width:120px;
+  height:1px;
   background: rgba(255,255,255,.25);
 }
 
-/* optional: don't show divider for the very first section (Music) */
 .section:first-of-type::before{
   display:none;
 }
+
 
