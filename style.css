@@ -328,3 +328,44 @@ a:hover{opacity:.85}
 .thumb:hover::before{ opacity:1; }
 .thumb:hover::after{ opacity:1; }
 .thumb:hover img::after{ opacity:1; }
+
+/* FIX: release cover + text true center alignment */
+.release{
+  display:flex;
+  flex-direction:column;
+  align-items:center;   /* ключевая строка */
+  text-align:center;
+}
+
+.release img{
+  display:block;
+  margin:0 auto;
+}
+/* BAD DAYS style play icon — triangle only */
+
+/* убираем любые фоны */
+.thumb::before{
+  background:rgba(0,0,0,.15);
+}
+
+/* triangle */
+.thumb::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-40%,-50%);
+  width:0;
+  height:0;
+  border-left:18px solid #fff;
+  border-top:12px solid transparent;
+  border-bottom:12px solid transparent;
+  opacity:0;
+  z-index:2;
+}
+
+/* show on hover only */
+.thumb:hover::after{
+  opacity:1;
+}
+
