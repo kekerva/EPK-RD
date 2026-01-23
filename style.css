@@ -1,11 +1,10 @@
 :root{
   --fg:#f2f2f2;
   --muted:#b5b5b5;
-  --bg:#0b0b0c;
   --line:rgba(255,255,255,.15);
 }
 
-*{box-sizing:border-box}
+*{ box-sizing:border-box; }
 
 html,body{
   margin:0;
@@ -14,15 +13,16 @@ html,body{
   color:var(--fg);
 }
 
-/* FIXED BACKGROUND */
+/* BACKGROUND (desktop) */
 body{
   background-image:url("assets/press-photo.jpg");
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
   background-attachment:fixed;
 }
 
-/* GRADIENT — starts higher, but below title top */
+/* GRADIENT OVERLAY (desktop) */
 .content{
   width:100%;
   background: linear-gradient(
@@ -47,12 +47,12 @@ body{
 .intro h1{
   font-size:56px;
   letter-spacing:.12em;
-  margin-bottom:28px;
+  margin:0 0 28px;
 }
 
 /* LINKS */
-a{color:var(--fg);text-decoration:none}
-a:hover{opacity:.85}
+a{ color:var(--fg); text-decoration:none; }
+a:hover{ opacity:.85; }
 
 /* SOCIALS */
 .socials{
@@ -60,12 +60,9 @@ a:hover{opacity:.85}
   gap:20px;
   flex-wrap:wrap;
   justify-content:center;
-  margin-bottom:32px;
+  margin:0 0 32px;
 }
-
-.socials a{
-  color:var(--muted);
-}
+.socials a{ color:var(--muted); }
 
 /* BUTTONS */
 .cta{
@@ -74,16 +71,12 @@ a:hover{opacity:.85}
   flex-wrap:wrap;
   justify-content:center;
 }
-
 .btn{
   padding:12px 20px;
   border:1px solid var(--fg);
-  border-radius:0; /* no rounded corners */
+  border-radius:999px;
 }
-
-.btn.ghost{
-  border-color:var(--line);
-}
+.btn.ghost{ border-color:var(--line); }
 
 /* SECTIONS */
 .section{
@@ -99,24 +92,20 @@ a:hover{opacity:.85}
   letter-spacing:.14em;
   font-size:20px;
   color:var(--muted);
-  margin-bottom:24px;
+  margin:0 0 24px;
 }
 
-/* MUSIC (Spotify) */
+/* Embedded frames (Spotify) */
 .section iframe{
-  border-radius:0; /* remove rounding */
+  border-radius:12px;
 }
 
-/* VIDEO */
+/* MAIN VIDEO */
 .video-main{
   width:100%;
   aspect-ratio:16/9;
-  margin-bottom:18px;
-  border-radius:0;
-}
-
-/* YOUTUBE UI FIX */
-.video-main{
+  margin:0 0 18px;
+  border-radius:18px;
   background:#000;
 }
 
@@ -129,6 +118,8 @@ a:hover{opacity:.85}
 
 .thumb{
   position:relative;
+  display:block;
+  border-radius:14px;
   overflow:hidden;
 }
 
@@ -136,69 +127,64 @@ a:hover{opacity:.85}
   width:100%;
   aspect-ratio:1/1;
   object-fit:cover;
+  display:block;
   transition:transform .25s ease;
 }
 
 .thumb:hover img{
-  transform:scale(1.06);
+  transform:scale(1.05);
 }
 
-/* overlay + play */
+/* play icon: triangle only (appears on hover) */
 .thumb::before{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.25);
+  background:rgba(0,0,0,.16);
   opacity:0;
   transition:opacity .2s ease;
+  pointer-events:none;
 }
 
 .thumb::after{
   content:"";
   position:absolute;
-  top:50%;
   left:50%;
-  width:52px;
-  height:52px;
-  border:1px solid rgba(255,255,255,.6);
+  top:50%;
   transform:translate(-50%,-50%);
-  opacity:0;
-}
-
-.thumb span{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-40%,-50%);
   width:0;
   height:0;
-  border-left:14px solid #fff;
-  border-top:9px solid transparent;
-  border-bottom:9px solid transparent;
+  border-left:22px solid rgba(255,255,255,.75);
+  border-top:14px solid transparent;
+  border-bottom:14px solid transparent;
   opacity:0;
+  transition:opacity .2s ease;
+  pointer-events:none;
 }
 
-.thumb:hover::before,
-.thumb:hover::after,
-.thumb:hover span{
-  opacity:1;
-}
+.thumb:hover::before{ opacity:1; }
+.thumb:hover::after{ opacity:1; }
 
-/* RELEASES — centered, smaller */
+/* RELEASES */
 .releases{
   display:flex;
   justify-content:center;
-  gap:48px;
   flex-wrap:wrap;
+  gap:110px; /* bigger gap so long title fits */
 }
 
 .release{
-  width:140px; /* smaller */
+  width:210px; /* 1.5x */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   text-align:center;
 }
 
 .release img{
   width:100%;
+  border-radius:14px;
+  display:block;
   transition:transform .25s ease;
 }
 
@@ -207,16 +193,20 @@ a:hover{opacity:.85}
 }
 
 .release-title{
+  margin-top:12px;
   font-size:15px;
   line-height:1.3;
+  white-space:nowrap; /* keep on one line */
 }
 
 .release-label{
+  margin-top:6px;
   font-size:13px;
   font-style:italic;
+  color:var(--muted);
 }
 
-/* PRESS — centered text */
+/* PRESS */
 .press-list{
   max-width:720px;
   margin:0 auto;
@@ -235,176 +225,26 @@ a:hover{opacity:.85}
 .press-source{
   font-size:12px;
   letter-spacing:.14em;
-}
-
-/* RESPONSIVE */
-@media (max-width:900px){
-  .intro h1{font-size:40px}
-  .video-thumbs{grid-template-columns:repeat(2,1fr)}
-}
-/* === ROUNDED CORNERS (return) === */
-.btn{ border-radius:999px; }
-.section iframe{ border-radius:12px; }
-.video-main{ border-radius:18px; }
-
-.thumb{ border-radius:14px; overflow:hidden; }
-.release img{ border-radius:14px; }
-
-/* === RELEASES: bigger covers + more gap + single-line title === */
-.releases{
-  gap:110px;                 /* больше расстояние между обложками */
-}
-
-.release{
-  width:210px;               /* было 140 → x1.5 */
-  text-align:center;
-}
-
-.release img{
-  width:100%;
-}
-
-.release-title{
-  white-space:nowrap;        /* чтобы Adore You/Bored... было в одну строку */
-  font-size:15px;
-}
-
-/* если где-то ещё остался большой шрифт из патчей — принудительно вернуть */
-.release-label{
-  font-size:13px;
-  font-style:italic;
-}
-
-/* === VIDEO THUMBS: restore play button without HTML span === */
-.thumb::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.22);
-  opacity:0;
-  transition:opacity .2s ease;
-  z-index:1;
-}
-
-/* play circle */
-.thumb::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:54px;
-  height:54px;
-  transform:translate(-50%,-50%);
-  border-radius:999px;
-  background:rgba(180,180,180,.32);
-  border:1px solid rgba(255,255,255,.35);
-  opacity:0;
-  transition:opacity .2s ease;
-  z-index:2;
-}
-
-/* play triangle (separate pseudo on img container via box-shadow trick) */
-.thumb img{
-  position:relative;
-}
-
-.thumb img::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:0;
-  height:0;
-  transform:translate(-40%,-50%);
-  border-left:14px solid rgba(255,255,255,.85);
-  border-top:9px solid transparent;
-  border-bottom:9px solid transparent;
-  opacity:0;
-  transition:opacity .2s ease;
-  z-index:3;
-}
-
-/* hover */
-.thumb:hover::before{ opacity:1; }
-.thumb:hover::after{ opacity:1; }
-.thumb:hover img::after{ opacity:1; }
-
-/* FIX: release cover + text true center alignment */
-.release{
-  display:flex;
-  flex-direction:column;
-  align-items:center;   /* ключевая строка */
-  text-align:center;
-}
-
-.release img{
+  color:var(--muted);
   display:block;
-  margin:0 auto;
-}
-/* BAD DAYS style play icon — triangle only */
-
-/* убираем любые фоны */
-.thumb::before{
-  background:rgba(0,0,0,.15);
+  text-align:right; /* source sits closer to the right edge */
+  margin-top:8px;
 }
 
-/* triangle */
-.thumb::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-40%,-50%);
-  width:0;
-  height:0;
-  border-left:18px solid #fff;
-  border-top:12px solid transparent;
-  border-bottom:12px solid transparent;
-  opacity:0;
-  z-index:2;
+/* RESPONSIVE (tablet/phone layout) */
+@media (max-width:900px){
+  .intro h1{ font-size:40px; }
+  .video-thumbs{ grid-template-columns:repeat(2,1fr); }
 }
 
-/* show on hover only */
-.thumb:hover::after{
-  opacity:1;
-}
-/* CLEAN PLAY ICON — triangle only */
-
-.thumb{
-  position:relative;
-}
-
-.thumb::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:0;
-  height:0;
-  border-left:22px solid rgba(255,255,255,.75); /* полупрозрачный */
-  border-top:14px solid transparent;
-  border-bottom:14px solid transparent;
-  opacity:0;
-  transition:opacity .2s ease;
-  pointer-events:none;
-}
-
-.thumb:hover::after{
-  opacity:1;
-}
-
-/* MOBILE HERO: use dedicated crop + keep gradient */
-@media (max-width: 700px){
+/* MOBILE HERO (iOS-friendly): use dedicated crop + earlier gradient */
+@media (max-width:700px){
   body{
-    background-image: url("assets/press-photo-mobile.jpg");
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-attachment: scroll; /* важно для iOS */
+    background-image:url("assets/press-photo-mobile.jpg");
+    background-attachment:scroll;
+    background-position:top center;
   }
 
-  /* градиент начинается раньше, чтобы текст читался */
   .content{
     background: linear-gradient(
       to bottom,
@@ -413,33 +253,30 @@ a:hover{opacity:.85}
     );
   }
 }
-/* FINAL: play icon on video thumbs (triangle only) + light dim */
-.thumb::before{
-  content:"" !important;
-  position:absolute !important;
-  inset:0 !important;
-  background: rgba(0,0,0,.18) !important;
-  opacity:0 !important;
-  transition: opacity .2s ease !important;
-  pointer-events:none !important;
+@media (max-width:700px){
+  body{
+    background-image:url("assets/press-photo-mobile.jpg");
+    background-size: contain;         /* <-- чтобы НЕ зумило */
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-color:#000;
+  }
+
+  /* вместо full-screen интро — нормальная высота под контент,
+     чтобы не было огромной пустоты */
+  .intro{
+    min-height: unset;
+    padding-top: 44vh;               /* под картинку */
+    padding-bottom: 56px;
+  }
+
+  /* градиент начинается раньше */
+  .content{
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 30vh,
+      rgba(0,0,0,.9) 75vh
+    );
+  }
 }
-
-.thumb::after{
-  content:"" !important;
-  position:absolute !important;
-  left:50% !important;
-  top:50% !important;
-  transform:translate(-50%,-50%) !important;
-  width:0 !important;
-  height:0 !important;
-  border-left:22px solid rgba(255,255,255,.75) !important;
-  border-top:14px solid transparent !important;
-  border-bottom:14px solid transparent !important;
-  opacity:0 !important;
-  transition: opacity .2s ease !important;
-  pointer-events:none !important;
-}
-
-.thumb:hover::before{ opacity:1 !important; }
-.thumb:hover::after{ opacity:1 !important; }
-
