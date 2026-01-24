@@ -302,3 +302,9 @@ a:hover{ opacity:.85; }
   border-radius:999px;
   background:transparent;
 }
+
+/* TEMP: hide PRESS block (links kept in HTML) */
+.press{
+  display:none;
+}
+
