@@ -85,6 +85,10 @@ a:hover{ opacity:.85; }
   padding:0 24px;
 }
 
+.section-last{
+  margin-bottom:24px;
+}
+
 /* HEADINGS */
 .section h2{
   text-align:center;
@@ -307,17 +311,17 @@ a:hover{ opacity:.85; }
 .press{
   display:none;
 }
+
 /* FOOTER – editorial style */
 .site-footer{
   max-width:900px;
-  margin:16px auto 0;    /* уменьшили расстояние от Versace-блока */
-  padding:0 24px 32px;  /* меньше воздуха снизу */
+  margin:0 auto;
+  padding:0 24px 32px;
 }
 
 .footer-info{
   font-size:15px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
+  letter-spacing:.04em;
   color:var(--muted);
   line-height:1.6;
   text-align:left;
