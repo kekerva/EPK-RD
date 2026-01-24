@@ -310,16 +310,15 @@ a:hover{ opacity:.85; }
 /* FOOTER – editorial style */
 .site-footer{
   max-width:900px;
-  margin:0 auto;
-  padding:0 24px 48px;
+  margin:16px auto 0;    /* уменьшили расстояние от Versace-блока */
+  padding:0 24px 32px;  /* меньше воздуха снизу */
 }
 
 .footer-info{
-  font-size:20px;              /* как h2 */
+  font-size:15px;
   text-transform:uppercase;
-  letter-spacing:.14em;
+  letter-spacing:.12em;
   color:var(--muted);
   line-height:1.6;
   text-align:left;
 }
-
