@@ -22,7 +22,7 @@ body{
   background-attachment:fixed;
 }
 
-/* GRADIENT OVERLAY (desktop) */
+/* GRADIENT OVERLAY */
 .content{
   width:100%;
   background: linear-gradient(
@@ -32,6 +32,10 @@ body{
   );
   padding-bottom:140px;
 }
+
+/* LINKS */
+a{ color:var(--fg); text-decoration:none; }
+a:hover{ opacity:.85; }
 
 /* INTRO */
 .intro{
@@ -50,10 +54,6 @@ body{
   margin:0 0 28px;
 }
 
-/* LINKS */
-a{ color:var(--fg); text-decoration:none; }
-a:hover{ opacity:.85; }
-
 /* SOCIALS */
 .socials{
   display:flex;
@@ -71,12 +71,17 @@ a:hover{ opacity:.85; }
   flex-wrap:wrap;
   justify-content:center;
 }
+
 .btn{
   padding:12px 20px;
-  border:1px solid var(--fg);
+  border:1px solid rgba(255,255,255,.9);
   border-radius:999px;
+  background:transparent;
 }
-.btn.ghost{ border-color:var(--line); }
+
+.btn.ghost{
+  border-color:var(--line);
+}
 
 /* SECTIONS */
 .section{
@@ -99,7 +104,7 @@ a:hover{ opacity:.85; }
   margin:0 0 24px;
 }
 
-/* Embedded frames (Spotify) */
+/* Embedded frames (Spotify etc.) */
 .section iframe{
   border-radius:12px;
 }
@@ -139,7 +144,7 @@ a:hover{ opacity:.85; }
   transform:scale(1.05);
 }
 
-/* play icon: triangle only (appears on hover) */
+/* play icon: triangle only (hover) */
 .thumb::before{
   content:"";
   position:absolute;
@@ -174,11 +179,11 @@ a:hover{ opacity:.85; }
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:110px; /* bigger gap so long title fits */
+  gap:110px;
 }
 
 .release{
-  width:210px; /* 1.5x */
+  width:210px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -200,7 +205,7 @@ a:hover{ opacity:.85; }
   margin-top:12px;
   font-size:15px;
   line-height:1.3;
-  white-space:nowrap; /* keep on one line */
+  white-space:nowrap;
 }
 
 .release-label{
@@ -210,109 +215,45 @@ a:hover{ opacity:.85; }
   color:var(--muted);
 }
 
-/* PRESS */
-.press-list{
-  max-width:720px;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  gap:28px;
-  text-align:center;
-}
-
-.press-title{
-  font-size:16px;
-  line-height:1.45;
-  font-style:italic;
-}
-
-.press-source{
-  font-size:12px;
-  letter-spacing:.14em;
-  color:var(--muted);
-  display:block;
-  text-align:right; /* source sits closer to the right edge */
-  margin-top:8px;
-}
-
-/* RESPONSIVE (tablet/phone layout) */
-@media (max-width:900px){
-  .intro h1{ font-size:40px; }
-  .video-thumbs{ grid-template-columns:repeat(2,1fr); }
-}
-
-/* MOBILE HERO (iOS-friendly): use dedicated crop + earlier gradient */
-@media (max-width:700px){
-  body{
-    background-image:url("assets/press-photo-mobile.jpg");
-    background-attachment:scroll;
-    background-position:top center;
-  }
-
-  .content{
-    background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,0) 45vh,
-      rgba(0,0,0,.9) 90vh
-    );
-  }
-}
-@media (max-width:700px){
-  body{
-    background-image:url("assets/press-photo-mobile.jpg");
-    background-size: contain;         /* <-- чтобы НЕ зумило */
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-color:#000;
-  }
-
-  /* вместо full-screen интро — нормальная высота под контент,
-     чтобы не было огромной пустоты */
-  .intro{
-    min-height: unset;
-    padding-top: 44vh;               /* под картинку */
-    padding-bottom: 56px;
-  }
-
-  /* градиент начинается раньше */
-  .content{
-    background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,0) 30vh,
-      rgba(0,0,0,.9) 75vh
-    );
-  }
-}
-@media (max-width:700px){
-  .releases{
-    gap:48px;   /* или 40px, если хочется плотнее */
-  }
-}
-/* MOBILE: add space before PRESS column */
-@media (max-width: 700px){
-  .two-col{
-    flex-direction: column;
-  }
-
-  .two-col .press{
-    margin-top: 72px;
-  }
-}
-/* === FINAL BUTTON STYLE === */
-.btn{
-  padding:12px 20px;
-  border:1px solid rgba(255,255,255,.9);
-  border-radius:999px;
-  background:transparent;
-}
-
-/* TEMP: hide PRESS block (links kept in HTML) */
+/* PRESS (hidden for now, links stay in HTML) */
 .press{
   display:none;
 }
 
-/* FOOTER – editorial style */
+/* PRESS / MEDIA */
+.media-photos{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:18px;
+  margin:0 0 28px;
+}
+
+.media-photo{
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.media-photos img{
+  width:100%;
+  height:180px;       /* keeps previews compact */
+  object-fit:cover;
+  display:block;
+  transition:transform .25s ease;
+}
+
+.media-photo:hover img{
+  transform:translateY(-6px) scale(1.03);
+}
+
+.media-downloads{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+}
+
+/* FOOTER */
 .site-footer{
   max-width:900px;
   margin:0 auto;
@@ -326,43 +267,46 @@ a:hover{ opacity:.85; }
   line-height:1.6;
   text-align:left;
 }
-/* PRESS / MEDIA */
-.media-photos{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:18px;
-  margin:0 0 28px;
-}
 
-.media-photo{
-  display:block;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-.media-photos img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  display:block;
-  transition:transform .25s ease;
-}
-
-/* hover like releases */
-.media-photo:hover img{
-  transform:translateY(-6px) scale(1.03);
-}
-
-.media-downloads{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-  justify-content:flex-start;
-}
-
-/* Tablet/Mobile */
+/* RESPONSIVE */
 @media (max-width:900px){
-  .media-photos{
-    grid-template-columns:repeat(2, 1fr);
+  .intro h1{ font-size:40px; }
+  .video-thumbs{ grid-template-columns:repeat(2,1fr); }
+  .releases{ gap:48px; }
+}
+
+@media (max-width:700px){
+  body{
+    background-image:url("assets/press-photo-mobile.jpg");
+    background-size:contain;
+    background-position:top center;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-color:#000;
+  }
+
+  .content{
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 30vh,
+      rgba(0,0,0,.9) 75vh
+    );
+  }
+
+  .intro{
+    min-height:unset;
+    padding-top:44vh;
+    padding-bottom:56px;
+  }
+
+  .media-photos img{
+    height:200px;
+  }
+}
+
+/* OPTIONAL: if you still use two-col layout elsewhere */
+@media (max-width:700px){
+  .two-col{
+    flex-direction:column;
   }
 }
