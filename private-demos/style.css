@@ -1,9 +1,8 @@
 /* private-demos/style.css */
 
 body {
-  background: url('../assets/rd-demos-page.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
+  background-color: #fff; /* белый фон всей страницы */
+  color: #000;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -12,8 +11,14 @@ body {
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 60px 20px;
-  background: rgba(0,0,0,0.6); /* затемнение для читаемости */
+  padding: 40px 20px;
+}
+
+.hero img {
+  display: block;
+  margin: 0 auto 40px auto; /* центрируем и отступ снизу */
+  max-width: 50%; /* уменьшаем фото в 2 раза */
+  height: auto;
   border-radius: 8px;
 }
 
@@ -25,7 +30,7 @@ body {
 
 .tracks .links {
   font-size: 10px;
-  color: #cccccc;
+  color: #555;
   line-break: anywhere;
   word-break: normal;
   overflow: hidden;
@@ -37,11 +42,12 @@ body {
 }
 
 .bio {
-  margin-top: 60px;
+  margin-top: 40px;
   line-height: 1.6;
   font-size: 16px;
+  color: #222;
 }
 
 .video {
-  margin-top: 80px;
+  margin-top: 60px;
 }
