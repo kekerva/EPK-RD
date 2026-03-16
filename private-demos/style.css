@@ -1,57 +1,59 @@
+/* private-demos/style.css */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #000;
 
-  /* Фото как фон всей страницы, фиксированный при скролле */
+  /* Фон всей страницы */
   background-color: #e8e7ec; /* запасной цвет */
   background-image: url('assets/rd-demos-page.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* фиксируем фон при прокрутке */
+  background-attachment: fixed; /* фон фиксирован при прокрутке */
 }
 
 /* Основной контейнер */
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 80px 20px 60px 20px; /* увеличенные отступы сверху и снизу */
+  padding: 80px 20px 60px 20px; /* увеличенные отступы */
 }
 
-/* Заголовок под фото */
+/* Заголовок */
 .header-label {
   text-align: center;
   color: #000;
   font-size: 36px;
   font-weight: bold;
-  margin-bottom: 60px; /* чуть больше пространства под заголовком */
+  margin-bottom: 60px;
 }
 
 /* SoundCloud */
 .tracks iframe {
   width: 100%;
   height: 450px;
-  margin-bottom: 20px; /* увеличенный отступ под iframe */
+  margin-bottom: 20px;
 }
 
 .tracks .links {
   font-size: 10px;
   color: #555;
-  margin-bottom: 40px; /* увеличенный отступ после ссылок */
+  margin-bottom: 40px;
 }
 
-/* Биография на полупрозрачной плашке без скруглений углов */
+/* Биография */
 .bio {
-  background: rgba(0,0,0,0.15); /* слегка затемнённая плашка */
-  backdrop-filter: blur(5px);    /* размытие фона за плашкой */
-  padding: 25px;                 /* увеличенный padding */
+  background: rgba(0,0,0,0.15); /* полупрозрачная затемнённая плашка */
+  backdrop-filter: blur(5px);    /* размытие фона */
+  padding: 25px;
   border-radius: 0;              /* углы не скруглены */
   text-align: left;
   line-height: 1.6;
   font-size: 16px;
-  color: #fff;                  
-  margin-bottom: 50px;           /* увеличенный отступ после блока */
+  color: #fff;
+  margin-bottom: 50px;           /* увеличенный отступ */
 }
 
 .bio p {
@@ -60,10 +62,10 @@ body {
 
 /* Видео */
 .video {
-  margin-top: 50px; /* больше пространства сверху */
+  margin-top: 50px;
 }
 
 /* Отступ футера */
 .footer-spacer {
-  height: 120px; /* увеличенный отступ внизу */
+  height: 120px;
 }
