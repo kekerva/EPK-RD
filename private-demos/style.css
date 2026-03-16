@@ -37,6 +37,27 @@ body {
   margin-bottom: 20px;
 }
 
+/* ------------------------------------ */
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  body {
+    /* На мобильных используем "fixed fallback" через псевдоэлемент */
+    background-attachment: scroll; /* iOS и Android часто игнорируют fixed */
+  }
+  body::before {
+    content: "";
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/rd-demos-page.jpg');
+    background-size: cover;
+    background-position: center center;
+    z-index: -1; /* чтобы блоки контента были поверх */
+  }
+}
+
 .tracks .links {
   font-size: 10px;
   color: #555;
